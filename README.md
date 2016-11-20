@@ -276,6 +276,7 @@ sudo NGINX_INSTALL_DIRECTORY/sbin/nginx (you need sudo because port 80 is used)
 ###### TODO
 
 - Show shares per worker over last 1 hour
+- Fix multiple workers under same name not summing hash rate
 - Fix difficulty api call
 - Add zec price api
 - Fix GPU stat
