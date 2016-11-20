@@ -272,3 +272,13 @@ cd YOUR_BUILD_DIRECTORY/pooljs/coins-for-all/webapp
 cp -r * NGINX_INSTALL_DIRECTORY/html
 sudo NGINX_INSTALL_DIRECTORY/sbin/nginx (you need sudo because port 80 is used)
 ```
+
+###### TODO
+
+- Show shares per worker over last 1 hour
+- Fix difficulty api call
+- Add zec price api
+- Fix GPU stat
+- Fix CPU stat
+- Fix Latency stat
+```
