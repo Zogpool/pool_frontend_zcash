@@ -532,6 +532,7 @@ int main(int argc, char **argv)
     
     backendConfig.isMaster = cfg->lookupBoolean("pool_frontend_zcash", "isMaster", true);
     backendConfig.poolFee = cfg->lookupInt("pool_frontend_zcash", "poolFee", 0);
+    backendConfig.luckFee = cfg->lookupInt("pool_frontend_zcash", "luckFee", 0);
     backendConfig.poolFeeAddr = cfg->lookupString("pool_frontend_zcash", "poolFeeAddr", "");
     
     

@@ -1,5 +1,6 @@
 #include "stratum.h"
 #include "jansson.h"
+#include <iostream>
 
 static const char *decodeAsCString(json_t *in)
 {
@@ -137,13 +138,38 @@ StratumDecodeStatusTy decodeStratumMessage(const char *in, StratumMessage *out)
   const char *time;
   const char *nonce;
   const char *equihashSolution;
-  if (strcmp(methodName, "mining.subscribe") == 0 && json_array_size(params) >= 4) {
+  if (strcmp(methodName, "mining.subscribe") == 0 && json_array_size(params) >= 2) {
     out->method = StratumMethodTy::Subscribe;
-    if ( !(decodeAsString(json_array_get(params, 0), out->subscribe.minerUserAgent) &&
-           decodeAsString(json_array_get(params, 1), out->subscribe.sessionId) &&
-           decodeAsString(json_array_get(params, 2), out->subscribe.connectHost) &&
-           decodeAsInteger(json_array_get(params, 3), &out->subscribe.connectPort)) )
-      return StratumDecodeStatusTy::FormatError;
+    if (json_array_size(params) == 2) {
+      const json_t* test = json_array_get(params, 0);
+      //const char *json_string_value(const json_t *string);
+      const char* y = json_string_value(test);
+      //int b = json_typeof(test);
+      bool t = json_is_null(test);
+      //std::cout << t;
+      out->subscribe.connectHost = "localhost";
+      out->subscribe.connectPort = 3357;
+      out->subscribe.sessionId = "0";
+      out->subscribe.minerUserAgent = "Optiminer";
+      //if ( !(decodeAsString(json_array_get(params, 2), out->subscribe.minerUserAgent) &&
+      //       decodeAsString(json_array_get(params, 3), out->subscribe.sessionId) &&
+      //       decodeAsString(json_array_get(params, 0), out->subscribe.connectHost) &&
+      //       decodeAsInteger(json_array_get(params, 1), &out->subscribe.connectPort)) ){
+      //  std::cout << out->subscribe.connectPort;
+      //  return StratumDecodeStatusTy::FormatError;}
+    } else {
+      const json_t* test = json_array_get(params, 3);
+      //const char *json_string_value(const json_t *string);
+      const char* y = json_string_value(test);
+      //int y = json_integer_value(test);
+      //int b = json_typeof(test);
+      bool t = json_is_null(test);
+      if ( !(decodeAsString(json_array_get(params, 0), out->subscribe.minerUserAgent) &&
+             decodeAsString(json_array_get(params, 1), out->subscribe.sessionId) &&
+             decodeAsString(json_array_get(params, 2), out->subscribe.connectHost) &&
+             decodeAsInteger(json_array_get(params, 3), &out->subscribe.connectPort)) )
+        return StratumDecodeStatusTy::FormatError;
+    }
   } else if (strcmp(methodName, "mining.authorize") == 0 && json_array_size(params) >= 1) {
     out->method = StratumMethodTy::Authorize;
     if ( !(decodeAsString(json_array_get(params, 0), out->authorize.login)) )
