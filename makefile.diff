@@ -1,0 +1,11 @@
+--- src/Makefile        2016-11-08 13:36:41.033699973 +0300
++++ src/Makefile        2016-11-08 13:37:20.889665298 +0300
+@@ -1380,7 +1380,7 @@
+ LIBSNARK_LIBS = -lsnark
+ LIBTOOL = $(SHELL) $(top_builddir)/libtool
+ LIBTOOL_APP_LDFLAGS =
+-LIBZCASH_LIBS = -lsnark -lgmp -lgmpxx -lboost_system-mt -lcrypto -lsodium -fopenmp
++LIBZCASH_LIBS = -lsnark -lgmp -lgmpxx -lboost_system-mt -lcrypto -lsodium -fopenmp -L/root/poolcore/x86_64-Linux/zcash -lpoolrpczcash -L/root/libp2p/x86_64-Linux/p2p -lp2p -L/root/libp2p/x86_64-Linux/asyncio -lasyncio-0.3 -lrt
+ LIPO =
+ LN_S = ln -s
+ LRELEASE =
