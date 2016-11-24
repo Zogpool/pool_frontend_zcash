@@ -1,0 +1,3 @@
+/home/luckpool/pool/pool_frontend_zcash/x86_64-Linux/CMakeFiles/edit_cache.dir
+/home/luckpool/pool/pool_frontend_zcash/x86_64-Linux/CMakeFiles/rebuild_cache.dir
+/home/luckpool/pool/pool_frontend_zcash/x86_64-Linux/CMakeFiles/pool_frontend_zcash.dir

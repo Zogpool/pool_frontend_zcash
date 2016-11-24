@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+11db49aa3e68576fdca890b628b31563 protocol.pb.cc
